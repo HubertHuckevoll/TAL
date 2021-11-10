@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /cardboard/
+Disallow: /cardboard.datastore/
+Disallow: /cardboard.kupc/
+Sitemap: https://tal-chemnitz.de/sitemap.xml

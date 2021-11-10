@@ -1,0 +1,137 @@
+:root
+{
+  --red-bg: rgba(153, 0, 0, .7);
+}
+
+body
+{
+  padding-left: 0;
+  padding-right: 0;
+  width: 97%;
+  background-image: none !important;
+}
+
+/* Page Banner Styles ----------------------------------------------------------*/
+#banner
+{
+  margin-top: 2px;
+  padding-bottom: 5px;
+  background-image: url(../img/vorhang_abstrakt.jpg);
+}
+
+#banner h1
+{
+  color: var(--light-headline);
+  margin: 0px;
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 15px 5px 15px 5px;
+  line-height: 2rem;
+  background-color: var(--red-bg);
+}
+
+#banner h2
+{
+  color: var(--dark-headline);
+  font-size: 0.6rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Navigation Bar ----------------------------------------------------------*/
+#navigation
+{
+  flex-direction: column;
+  background: none;
+  border: none;
+  margin-bottom: 0;
+}
+
+#linkBox
+{
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+
+/* Navigation Link Styles */
+#linkBox a, #linkBox a:active, #linkBox a:visited
+{
+  display: inline-block;
+  text-decoration: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 2px;
+  border: 1px solid var(--dark-bg);
+  border-radius: 3px;
+  opacity: 1;
+  color: #030303;
+  flex-grow: 1;
+  text-align: center;
+}
+
+#navigation a:hover, #navigation a:visited:hover
+{
+  color: var(--anchor-color-lookalike); /* miracles of perception: to appear somewhat like #CC3333, this needs to be #AA1111*/
+}
+
+/* Search ----------------------------------------------------------*/
+#searchBox
+{
+  width: 100%;
+  margin: 0px;
+  margin-top: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+#searchBox input {
+  height: 32px;
+  line-height: 32px;
+}
+
+#searchBox button {
+  height: 32px;
+}
+
+/* Sidebar ----------------------------------------------------------*/
+#sidebar
+{
+  display: none;
+}
+
+/* Content ----------------------------------------------------------*/
+#content
+{
+  float: none;
+  clear: both;
+  width: auto;
+  font-size: 1rem;
+  line-height: 1.5em;
+  padding-top: 20px;
+}
+
+#schlagl img
+{
+  box-shadow: 2px 2px 5px var(--dark-bg);
+  width: 100%;
+}
+
+#articleGalleryImgBox img {
+  max-width: 100%;
+}
+
+.abcArticleOverview {
+  padding-left: 0 !important;
+}
+
+.cbPages {
+  display: none;
+}
+
+#footer
+{
+  font-size: .5rem;
+  line-height: .8rem;
+}

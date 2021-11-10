@@ -1,0 +1,37 @@
+#!/usr/bin/php
+
+<?php
+
+  /**
+   * CLI build script
+   * used for building all articles on the command line
+   * we need to patch in some variables that are not available
+   * in the CLI environment but are neccessary for building
+   *
+   * $_SERVER['DOCUMENT_ROOT'] => CLI_DOCUMENT_ROOT:
+   * used by getPathFS - at build time only!
+   * _______________________________________________________________
+   */
+
+  error_reporting(E_ALL ^ E_NOTICE);
+  require_once('/var/services/web/cardboard/cbLoader.php');
+  require_once('/var/services/web/cardboard.kupc/autoload.php');
+  require_once('/var/services/web/cardboard.kupc/builder.php');
+
+  define('CLI_DOCUMENT_ROOT', '/var/services/web/'); // used by getPathFS
+
+  try
+  {
+    $what       = (isset($argv[1])) ? $argv[1] : 'all';
+    $filterOp   = (isset($argv[2])) ? $argv[2] : null;
+    $filterData = (isset($argv[3])) ? $argv[3] : null;
+
+    $k = new builder();
+    $k->run($what, $filterOp, $filterData);
+  }
+  catch(Exception $e)
+  {
+    die($e->getMessage());
+  }
+
+?>

@@ -1,0 +1,24 @@
+{
+    "pages": {
+        "box":  "TAL-pages",
+        "pwd":  "$2y$10$rZyoQIu6Kwo08K/0tOVx.u3072QBymm1KSULsudfuRHgEX6fmIGL.",
+        "type": "classic",
+        "internal": false,
+        "alias": "Pages",
+        "email": "mathias.meyer@chemonline.de"
+    },
+    "articles": {
+        "box":  "TAL-articles",
+        "pwd":  "$2y$10$rZyoQIu6Kwo08K/0tOVx.u3072QBymm1KSULsudfuRHgEX6fmIGL.",
+        "type": "classic",
+        "internal": false,
+        "alias": "Blog"
+    },
+    "downloads": {
+        "box":  "TAL-downloads",
+        "pwd":  "$2y$10$rZyoQIu6Kwo08K/0tOVx.u3072QBymm1KSULsudfuRHgEX6fmIGL.",
+        "type": "classic",
+        "internal": false,
+        "alias": "Downloads"
+    }
+}

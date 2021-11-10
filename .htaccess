@@ -1,0 +1,33 @@
+# .htaccess
+# BEGIN GZIP
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</ifmodule>
+# END GZIP
+
+Options -Indexes
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteRule gallery/TAL-articles/(.*),([0-9]*).html/([0-9]*)$       index.php?hook=gallery&articleHook=article&articleBox=TAL-articles&article=$1&articlePage=$2&imgIdx=$3
+RewriteRule TAL-articles/(.*),(.*).html$                            index.php?hook=article&article=$1&articlePage=$2
+RewriteRule TAL-articles/([0-9]+)$                                  index.php?hook=index&boxPage=$1
+RewriteRule backFrom/TAL-articles/(.*).html$                        index.php?hook=index&boxPage=$1
+RewriteRule TAL-articles$                                           index.php?hook=index
+RewriteRule /$                                                      index.php?hook=index
+
+RewriteRule TAL-pages/Kontakt.html$                                 index.php?hook=contact&op=show
+RewriteRule TAL-pages/Gaestebuch.html$                              index.php?hook=gaestebuch&op=show
+RewriteRule TAL-pages/(.*),(.*).html$                               index.php?hook=page&article=$1&articlePage=$2
+RewriteRule TAL-pages/(.*).html$                                    index.php?hook=page&article=$1
+
+RewriteRule TAL-downloads/(.*),(.*).html$                           index.php?hook=download&article=$1&articlePage=$2
+RewriteRule TAL-downloads/([0-9]+)$                                 index.php?hook=downloads&boxPage=$1
+RewriteRule backFrom/TAL-downloads/(.*).html$                       index.php?hook=downloads&boxPage=$1
+RewriteRule TAL-downloads$                                          index.php?hook=downloads
+
+RewriteRule sitemap.xml                                             index.php?hook=sitemap
+
+RewriteRule                                                         boxes.json - [F]
+
+ErrorDocument 404                                                   /error404.php
