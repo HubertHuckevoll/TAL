@@ -16,7 +16,7 @@ class gaestebuchVP extends talVP
   {
     $html = '';
 
-    $pv = new \cb\view\fragment\cbArticleClassicStyle1VF($this->ep, $this->hook, $this->linker);
+    $pv = new \cb\view\fragment\cbArticleClassicStyle1VF($this->ep, $this->mod, $this->hook, $this->linker);
     $pv->viewHints = $this->viewHints;
     $pv->addDataFromArray($this->data['article']['model']);
     $pv->addDataFromArray($this->data['article']['meta']);
@@ -30,7 +30,7 @@ class gaestebuchVP extends talVP
    */
   protected function additionalContent()
   {
-    $pv = new \cb\view\fragment\cbCommentsVF($this->ep, $this->hook, $this->linker);
+    $pv = new \cb\view\fragment\cbCommentsVF($this->ep, $this->mod, $this->hook, $this->linker);
     $pv->addDataFromArray($this->data['comments']['model']);
     $pv->addDataFromArray($this->data['comments']['meta']);
 

@@ -16,11 +16,11 @@ window.addEventListener("DOMContentLoaded", function(event)
     ts.init();
 
     // Gallery
-    let gallery = new cbGallery('.articleParagraphImg, .articleHeaderImg');
-    gallery.init();
+    //let gallery = new cbGallery('.articleParagraphImg, .articleHeaderImg');
+    //gallery.init();
 
     // Sidebar
-    fetch('index.php?ajax=ajax&hook=sidebar').then(response => response.text()).then((data) =>
+    fetch('index.php?ajax=ajax&mod=sidebarC&hook=index').then(response => response.text()).then((data) =>
     {
       // fetch Sidebar
       document.querySelector('#hotStuffBox .sidebarMenuBoxContent').innerHTML = data;

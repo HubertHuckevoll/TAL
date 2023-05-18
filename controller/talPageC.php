@@ -17,85 +17,6 @@ class talPageC extends cbPageC
   }
 
   /**
-   * fill sidebar
-   * called from JS
-   * ________________________________________________________________
-   */
-  public function sidebar()
-  {
-    $this->initView('sidebarVP');
-
-    // Random Stuff
-    $cb = new cbBoxM('TAL-articles');
-    $arts = $cb->articleObjs2Array($cb->getRandomArticles(6));
-    $this->view->data = $arts;
-
-    $this->view->drawPage();
-  }
-
-  /**
-   * the blog hook
-   * ________________________________________________________________
-   */
-  public function index()
-  {
-    $boxA = $this->boxes->getBoxByName('TAL-articles');
-    $cbb = new cbBoxC($boxA);
-    $ret = array();
-
-    $this->initView('indexVP');
-    $this->view->hook = 'articles';
-    $this->view->articleHook = 'article';
-
-    try
-    {
-      $ret = $cbb->show();
-
-    	$this->view->setData('articles', $ret);
-    	$this->view->setData('pageTitle', $ret['meta']['cTitle']);
-    	$this->view->setData('metaDescription', $ret['meta']['cTeaser']);
-	    $this->view->setData('bgImg', 'index.gif');
-
-	    $this->view->drawPage();
-    }
-    catch (Exception $e)
-    {
-    	$this->view->drawPage($e->getMessage);
-    }
-  }
-
-  /**
-   * blog item
-   * _________________________________________________________________
-   */
-  public function article()
-  {
-		$articleName = $this->requestM->getReqVar('article');
-    $boxA = $this->boxes->getBoxByName('TAL-articles');
-    $ret = '';
-
-    $this->initView('articleVP');
-    $this->view->viewHints = array('backLinkHook' => 'articles', 'galleryHook' => 'gallery');
-
-    try
-    {
-      $cba = new cbArticleC($boxA, $articleName);
-    	$ret = $cba->show();
-
-    	$this->view->setData('article', $ret);
-    	$this->view->setData('pageTitle', $ret['meta']['cTitle']);
-    	$this->view->setData('metaDescription', $ret['meta']['cTeaser']);
-    	$this->view->setData('bgImg', 'dienste.gif');
-
-    	$this->view->drawPage();
-    }
-    catch (Exception $e)
-    {
-    	$this->view->drawPage($e->getMessage());
-    }
-  }
-
-  /**
    * the downloads hook
    * ________________________________________________________________
    */
@@ -113,16 +34,16 @@ class talPageC extends cbPageC
     {
       $ret = $cbb->show();
 
-    	$this->view->setData('articles', $ret);
-    	$this->view->setData('pageTitle', $ret['meta']['cTitle']);
-    	$this->view->setData('metaDescription', $ret['meta']['cTeaser']);
-	    $this->view->setData('bgImg', 'downloads.gif');
+      $this->view->setData('articles', $ret);
+      $this->view->setData('pageTitle', $ret['meta']['cTitle']);
+      $this->view->setData('metaDescription', $ret['meta']['cTeaser']);
+      $this->view->setData('bgImg', 'downloads.gif');
 
-	    $this->view->drawPage();
+      $this->view->drawPage();
     }
     catch (Exception $e)
     {
-    	$this->view->drawPage($e->getMessage);
+      $this->view->drawPage($e->getMessage);
     }
   }
 
@@ -132,7 +53,7 @@ class talPageC extends cbPageC
    */
   public function download()
   {
-		$articleName = $this->requestM->getReqVar('article');
+    $articleName = $this->requestM->getReqVar('article');
     $boxA = $this->boxes->getBoxByName('TAL-downloads');
     $ret = '';
 
@@ -142,18 +63,18 @@ class talPageC extends cbPageC
     try
     {
       $cba = new cbArticleC($boxA, $articleName);
-    	$ret = $cba->show();
+      $ret = $cba->show();
 
-    	$this->view->setData('article', $ret);
-    	$this->view->setData('pageTitle', $ret['meta']['cTitle']);
-    	$this->view->setData('metaDescription', $ret['meta']['cTeaser']);
-    	$this->view->setData('bgImg', 'downloads.gif');
+      $this->view->setData('article', $ret);
+      $this->view->setData('pageTitle', $ret['meta']['cTitle']);
+      $this->view->setData('metaDescription', $ret['meta']['cTeaser']);
+      $this->view->setData('bgImg', 'downloads.gif');
 
-    	$this->view->drawPage();
+      $this->view->drawPage();
     }
     catch (Exception $e)
     {
-    	$this->view->drawPage($e->getMessage());
+      $this->view->drawPage($e->getMessage());
     }
   }
 
@@ -163,7 +84,7 @@ class talPageC extends cbPageC
    */
   public function page()
   {
-		$articleName = $this->requestM->getReqVar('article');
+    $articleName = $this->requestM->getReqVar('article');
     $boxA = $this->boxes->getBoxByName('TAL-pages');
     $ret = '';
 
@@ -181,18 +102,18 @@ class talPageC extends cbPageC
     try
     {
       $cba = new cbArticleC($boxA, $articleName);
-  		$ret = $cba->show();
+      $ret = $cba->show();
 
-  		$this->view->setData('article', $ret);
-    	$this->view->setData('pageTitle', $ret['meta']['cTitle']);
-    	$this->view->setData('metaDescription', $ret['meta']['cTeaser']);
-    	$this->view->setData('bgImg', 'features.gif');
+      $this->view->setData('article', $ret);
+      $this->view->setData('pageTitle', $ret['meta']['cTitle']);
+      $this->view->setData('metaDescription', $ret['meta']['cTeaser']);
+      $this->view->setData('bgImg', 'features.gif');
 
-    	$this->view->drawPage();
+      $this->view->drawPage();
     }
     catch (Exception $e)
     {
-    	$this->view->drawPage($e->getMessage());
+      $this->view->drawPage($e->getMessage());
     }
   }
 
@@ -203,35 +124,35 @@ class talPageC extends cbPageC
    */
   public function contact()
   {
-		$op = $this->requestM->getReqVar('op');
+    $op = $this->requestM->getReqVar('op');
     $boxA = $this->boxes->getBoxByName('TAL-pages');
     $email = $boxA['email'];
-		$articleName = 'Kontakt';
-		$cba = null;
-		$cbc = null;
+    $articleName = 'Kontakt';
+    $cba = null;
+    $cbc = null;
     $ret = '';
 
     $this->initView('contactVP');
 
     try
     {
-  	  $cba = new cbArticleC($boxA, $articleName);
-  		$ret = $cba->show();
-    	$this->view->setData('article', $ret);
-    	$this->view->setData('pageTitle', $ret['meta']['cTitle']);
-    	$this->view->setData('metaDescription', $ret['meta']['cTeaser']);
+      $cba = new cbArticleC($boxA, $articleName);
+      $ret = $cba->show();
+      $this->view->setData('article', $ret);
+      $this->view->setData('pageTitle', $ret['meta']['cTitle']);
+      $this->view->setData('metaDescription', $ret['meta']['cTeaser']);
 
-	    $cbc = new cbContactC($boxA, $articleName, $email);
-	    $ret = $cbc->exec($op);
-	    $this->view->setData('contact', $ret);
+      $cbc = new cbContactC($boxA, $articleName, $email);
+      $ret = $cbc->exec($op);
+      $this->view->setData('contact', $ret);
 
-	    $this->view->setData('bgImg', 'kontakt.gif');
+      $this->view->setData('bgImg', 'kontakt.gif');
 
-	    $this->view->drawPage();
+      $this->view->drawPage();
     }
     catch (Exception $e)
     {
-    	$this->view->drawPage($e->getMessage());
+      $this->view->drawPage($e->getMessage());
     }
   }
 
@@ -241,11 +162,11 @@ class talPageC extends cbPageC
    */
   public function gaestebuch()
   {
-		$op = $this->requestM->getReqVar('op');
+    $op = $this->requestM->getReqVar('op');
     $boxA = $this->boxes->getBoxByName('TAL-pages');
-		$articleName = 'Gaestebuch';
-		$cba = null;
-		$cbc = null;
+    $articleName = 'Gaestebuch';
+    $cba = null;
+    $cbc = null;
     $ret = '';
 
     $this->initView('gaestebuchVP');
@@ -254,68 +175,35 @@ class talPageC extends cbPageC
     {
       if (!isAjax())
       {
-    	  $cba = new cbArticleC($boxA, $articleName);
-    		$ret = $cba->show();
+        $cba = new cbArticleC($boxA, $articleName);
+        $ret = $cba->show();
 
-      	$this->view->setData('article', $ret);
-      	$this->view->setData('pageTitle', $ret['meta']['cTitle']);
-      	$this->view->setData('metaDescription', $ret['meta']['cTeaser']);
-	    	$this->view->setData('bgImg', 'gbuch.gif');
+        $this->view->setData('article', $ret);
+        $this->view->setData('pageTitle', $ret['meta']['cTitle']);
+        $this->view->setData('metaDescription', $ret['meta']['cTeaser']);
+        $this->view->setData('bgImg', 'gbuch.gif');
 
-  	    $cbc = new cbCommentsC($boxA, $articleName, 'gaestebuch');
-  	    $ret = $cbc->exec($op);
-  	    $this->view->setData('comments', $ret);
+        $cbc = new cbCommentsC($boxA, $articleName, 'gaestebuch');
+        $ret = $cbc->exec($op);
+        $this->view->setData('comments', $ret);
 
         $this->view->drawPage();
       }
       else
       {
-  	    $cbc = new cbCommentsC($boxA, $articleName, 'gaestebuch');
-  	    $ret = $cbc->exec($op);
-  	    $this->view->setData('comments', $ret);
+        $cbc = new cbCommentsC($boxA, $articleName, 'gaestebuch');
+        $ret = $cbc->exec($op);
+        $this->view->setData('comments', $ret);
 
-  	    $this->view->drawAjax();
+        $this->view->drawAjax();
       }
     }
     catch (Exception $e)
     {
-    	$this->view->drawPage($e->getMessage());
+      $this->view->drawPage($e->getMessage());
     }
   }
 
-  /**
-   * cbGallery Hook
-   * _________________________________________________________________
-   */
-  public function gallery()
-  {
-    $articleBox  = $this->requestM->getReqVar('articleBox');
-		$articleName = $this->requestM->getReqVar('article');
-    $articleHook = $this->requestM->getReqVar('articleHook');
-    $articlePage = $this->requestM->getReqVar('articlePage');
-  	$imgIdx = $this->requestM->getReqVar('imgIdx');
-
-  	$this->initView('galleryVP');
-    $this->view->articleHook = $articleHook;
-
-    try
-    {
-      $cba = new cbArticleM($articleBox, $articleName);
-      $cba->load();
-      $data['model'] = $cba->getArticle();
-      $data['meta']['articlePage'] = $articlePage;
-      $data['meta']['imgIdx'] = $imgIdx;
-    	$this->view->setData('pageTitle', $cba->getArticleHeadline());
-    	$this->view->setData('metaDescription', $cba->getArticleAbstract());
-    	$this->view->setData('article', $data);
-
-	    $this->view->drawPage();
-    }
-    catch(Exception $e)
-    {
-    	$this->view->drawPage($e->getMessage());
-    }
-  }
 
   /**
    * cbSearch Hook

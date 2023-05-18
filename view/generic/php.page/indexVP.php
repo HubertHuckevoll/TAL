@@ -1,8 +1,9 @@
 <?php
 namespace view\generic\page;
+
 class indexVP extends talVP
 {
-  public $articleHook = '';
+  use \cb\view\fragment\cbBoxVF;
 
   /**
    * render cbBox
@@ -10,12 +11,9 @@ class indexVP extends talVP
    */
   protected function mainContent()
   {
-    $pv = new \cb\view\fragment\cbBoxVF($this->ep, $this->hook, $this->articleHook, $this->linker);
-    $pv->addDataFromArray($this->data['articles']['model']);
-    $pv->addDataFromArray($this->data['articles']['meta']);
-
-    return $pv->render();
+    return $this->renderArticleList();
   }
+
 }
 
 ?>

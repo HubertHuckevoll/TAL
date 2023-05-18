@@ -13,8 +13,8 @@ RewriteRule gallery/TAL-articles/(.*),([0-9]*).html/([0-9]*)$       index.php?ho
 RewriteRule TAL-articles/(.*),(.*).html$                            index.php?hook=article&article=$1&articlePage=$2
 RewriteRule TAL-articles/([0-9]+)$                                  index.php?hook=index&boxPage=$1
 RewriteRule backFrom/TAL-articles/(.*).html$                        index.php?hook=index&boxPage=$1
-RewriteRule TAL-articles$                                           index.php?hook=index
-RewriteRule /$                                                      index.php?hook=index
+RewriteRule TAL-articles$                                           index.php?mod=indexC&hook=index
+RewriteRule /$                                                      index.php?mod=indexC&hook=index
 
 RewriteRule TAL-pages/Kontakt.html$                                 index.php?hook=contact&op=show
 RewriteRule TAL-pages/Gaestebuch.html$                              index.php?hook=gaestebuch&op=show
