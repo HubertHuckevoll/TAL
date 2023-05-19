@@ -4,7 +4,7 @@
  * front controller
  * __________________________________________________________________
  */
-class articleC extends cbArticleC
+class downloadC extends cbArticleC
 {
 
   /**
@@ -17,21 +17,20 @@ class articleC extends cbArticleC
     {
       $requestM = new cbRequestM(); // FIXME
       $articleName = $requestM->getReqVar('article');
-      parent::__construct('TAL-articles', $articleName);
+      parent::__construct('TAL-downloads', $articleName);
 
       $viewHints = [
         'ep' => 'index.php',
-        'mod' => 'articleC',
+        'mod' => 'downloadC',
         'hook' => 'index',
-        'backLinkMod' => 'indexC',
+        'backLinkMod' => 'downloadsC',
         'backLinkHook' => 'index',
         'galleryMod' => 'galleryC',
         'galleryHook' => 'index',
-        'pageNumbers' => 'true'
       ];
 
       $this->initView('articleVP', $viewHints);
-      $this->view->setData('bgImg', 'dienste.gif');
+      $this->view->setData('bgImg', 'downloads.gif');
       $this->view->setData('ver', getVer());
     }
     catch(Exception $e)

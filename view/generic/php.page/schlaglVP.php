@@ -1,8 +1,11 @@
 <?php
+
 namespace view\generic\page;
+
 class schlaglVP extends talVP
 {
-  public $viewHints = array();
+  use \cb\view\fragment\cbArticleMetadataVF,
+      \cb\view\fragment\cbArticleClassicStyle0VF;
 
   /**
    * metadata
@@ -10,11 +13,7 @@ class schlaglVP extends talVP
    */
   protected function additionalHeadData()
   {
-    $pv = new \cb\view\fragment\cbArticleMetadataVF($this->ep, $this->hook, $this->linker);
-    $pv->addDataFromArray($this->data['article']['model']);
-    $pv->addDataFromArray($this->data['article']['meta']);
-
-    return $pv->render();
+    return $this->renderMetadata();
   }
 
   /**
@@ -23,12 +22,7 @@ class schlaglVP extends talVP
    */
   protected function mainContent()
   {
-    $pv = new \cb\view\fragment\cbArticleClassicStyle0VF($this->ep, $this->hook, $this->linker);
-    $pv->viewHints = $this->viewHints;
-    $pv->addDataFromArray($this->data['article']['model']);
-    $pv->addDataFromArray($this->data['article']['meta']);
-
-    return $pv->render();
+    return $this->renderArticle();
   }
 }
 

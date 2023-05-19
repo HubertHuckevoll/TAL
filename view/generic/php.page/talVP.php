@@ -68,7 +68,7 @@ class talVP extends \cb\view\page\cbPageVP
                        '<a href="TAL-downloads"                    title="Downloads">Downloads</a>'.
                        '<a href="TAL-pages/Gaestebuch.html"        title="Gästebuch">Gästebuch</a>'.
                     '</div>'.
-                    '<form method="post" id="searchBox" name="searchForm" action="index.php?hook=search">'.
+                    '<form method="post" id="searchBox" name="searchForm" action="index.php?mod=searchC&hook=index">'.
                        '<input type="text" name="term" size="30" maxlength="255" autocomplete="off"><button type="submit">&#x1F50D;</button>'.
                     '</form>'.
                   '</div>'.

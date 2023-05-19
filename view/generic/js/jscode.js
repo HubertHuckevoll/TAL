@@ -12,12 +12,12 @@ window.addEventListener("DOMContentLoaded", function(event)
   if (document.querySelector('#sidebar').offsetHeight != 0)
   {
     // Search
-    let ts = new cbSearch('#searchBox');
-    ts.init();
+    //let ts = new cbSearch('#searchBox');
+    //ts.init();
 
     // Gallery
-    //let gallery = new cbGallery('.articleParagraphImg, .articleHeaderImg');
-    //gallery.init();
+    let gallery = new cbGallery('.articleParagraphImg, .articleHeaderImg');
+    gallery.init();
 
     // Sidebar
     fetch('index.php?ajax=ajax&mod=sidebarC&hook=index').then(response => response.text()).then((data) =>

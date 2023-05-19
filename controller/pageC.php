@@ -4,34 +4,35 @@
  * front controller
  * __________________________________________________________________
  */
-class articleC extends cbArticleC
+class pageC extends cbArticleC
 {
 
-  /**
-   * Konstruktor
-   * ________________________________________________________________
-   */
   public function __construct()
   {
     try
     {
       $requestM = new cbRequestM(); // FIXME
       $articleName = $requestM->getReqVar('article');
-      parent::__construct('TAL-articles', $articleName);
+      parent::__construct('TAL-pages', $articleName);
 
       $viewHints = [
         'ep' => 'index.php',
-        'mod' => 'articleC',
+        'mod' => 'pageC',
         'hook' => 'index',
-        'backLinkMod' => 'indexC',
-        'backLinkHook' => 'index',
         'galleryMod' => 'galleryC',
-        'galleryHook' => 'index',
-        'pageNumbers' => 'true'
+        'galleryHook' => 'index'
       ];
 
-      $this->initView('articleVP', $viewHints);
-      $this->view->setData('bgImg', 'dienste.gif');
+      if ($articleName == 'Schlaglichter')
+      {
+        $this->initView('schlaglVP', $viewHints);
+      }
+      else
+      {
+        $this->initView('articleVP', $viewHints);
+      }
+
+      $this->view->setData('bgImg', 'features.gif');
       $this->view->setData('ver', getVer());
     }
     catch(Exception $e)

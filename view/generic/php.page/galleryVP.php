@@ -12,7 +12,7 @@ class galleryVP extends talVP
    * render cbBox
    * ________________________________________________________________
    */
-  public function mainContent()
+  protected function mainContent()
   {
     return $this->renderGallery();
   }

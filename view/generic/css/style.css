@@ -145,6 +145,7 @@ main
   padding: 0px;
   width: 35%;
   hyphens: auto;
+  font-size: 90%;
 }
 
 #sidebar a, #sidebar a:active, #sidebar a:visited
