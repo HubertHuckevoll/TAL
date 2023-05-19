@@ -17,7 +17,7 @@ RewriteRule TAL-articles$                                           index.php?mo
 RewriteRule /$                                                      index.php?mod=indexC&hook=index
 
 RewriteRule TAL-pages/Kontakt.html$                                 index.php?hook=contact&op=show
-RewriteRule TAL-pages/Gaestebuch.html$                              index.php?hook=gaestebuch&op=show
+RewriteRule TAL-pages/Gaestebuch.html$                              index.php?mod=gaestebuchC&hook=index
 RewriteRule TAL-pages/(.*),(.*).html$                               index.php?hook=page&article=$1&articlePage=$2
 RewriteRule TAL-pages/(.*).html$                                    index.php?hook=page&article=$1
 

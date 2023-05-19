@@ -1,12 +1,15 @@
 <?php
+
 namespace view\generic\page;
+
 class gaestebuchVP extends talVP
 {
+  use \cb\view\fragment\cbArticleClassicStyle1VF,
+      \cb\view\fragment\cbCommentsVF;
+
   // dont't add these to the constructor.
   // all views should have the same construction api
   // so we can instantiate them programmatically
-  public $viewHints = array();
-  public $viewOp = '';
 
   /**
    *
@@ -14,14 +17,8 @@ class gaestebuchVP extends talVP
    */
   protected function mainContent()
   {
-    $html = '';
-
-    $pv = new \cb\view\fragment\cbArticleClassicStyle1VF($this->ep, $this->mod, $this->hook, $this->linker);
-    $pv->viewHints = $this->viewHints;
-    $pv->addDataFromArray($this->data['article']['model']);
-    $pv->addDataFromArray($this->data['article']['meta']);
-
-    return $pv->render();
+    $html = $this->renderArticle();
+    return $html;
   }
 
   /**
@@ -30,13 +27,8 @@ class gaestebuchVP extends talVP
    */
   protected function additionalContent()
   {
-    $pv = new \cb\view\fragment\cbCommentsVF($this->ep, $this->mod, $this->hook, $this->linker);
-    $pv->addDataFromArray($this->data['comments']['model']);
-    $pv->addDataFromArray($this->data['comments']['meta']);
-
-    $viewOp = $this->data['comments']['meta']['viewOp'];
-
-    return $this->exec($pv, $viewOp);
+    $viewOp = $this->data['viewOp'];
+    return $this->exec($viewOp);
   }
 
   /**
