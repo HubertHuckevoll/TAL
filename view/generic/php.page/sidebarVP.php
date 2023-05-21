@@ -9,7 +9,7 @@ class sidebarVP extends \cb\view\page\cbPageVP
    * render sidebarV
    * _________________________________________________________________
    */
-  public function drawPage($errMsg = '')
+  public function drawPage($err = '')
   {
     echo $this->renderTeasers();
   }

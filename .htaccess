@@ -21,7 +21,7 @@ RewriteRule TAL-pages/Gaestebuch.html$                              index.php?mo
 RewriteRule TAL-pages/(.*),(.*).html$                               index.php?mod=pageC&hook=index&article=$1&articlePage=$2
 RewriteRule TAL-pages/(.*).html$                                    index.php?mod=pageC&hook=index&article=$1
 
-RewriteRule TAL-downloads/(.*),(.*).html$                           index.php?mod=downloadsC&hook=index&article=$1&articlePage=$2
+RewriteRule TAL-downloads/(.*),(.*).html$                           index.php?mod=downloadC&hook=index&article=$1&articlePage=$2
 RewriteRule TAL-downloads/([0-9]+)$                                 index.php?mod=downloadsC&hook=index&boxPage=$1
 RewriteRule backFrom/TAL-downloads/(.*).html$                       index.php?mod=downloadsC&hook=index&boxPage=$1
 RewriteRule TAL-downloads$                                          index.php?mod=downloadsC&hook=index

@@ -1,19 +1,18 @@
 <?php
 
 /**
- * front controller
+ * page controller
  * __________________________________________________________________
  */
 class pageC extends cbArticleC
 {
 
-  public function __construct()
+  public function __construct($linker, $requestM)
   {
     try
     {
-      $requestM = new cbRequestM(); // FIXME
       $articleName = $requestM->getReqVar('article');
-      parent::__construct('TAL-pages', $articleName);
+      parent::__construct('TAL-pages', $articleName, $linker, $requestM);
 
       $viewHints = [
         'ep' => 'index.php',
@@ -35,9 +34,9 @@ class pageC extends cbArticleC
       $this->view->setData('bgImg', 'features.gif');
       $this->view->setData('ver', getVer());
     }
-    catch(Exception $e)
+    catch (Exception $e)
     {
-      throw $e;
+      $this->view->drawPage($e->getMessage());
     }
   }
 

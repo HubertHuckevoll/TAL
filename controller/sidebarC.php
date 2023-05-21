@@ -10,18 +10,26 @@ class sidebarC extends cbPageC
    * Konstruktor
    * ________________________________________________________________
    */
-  public function __construct()
+  public function __construct($linker, $requestM)
   {
-    parent::__construct();
-    $viewHints = [
-      'ep' => 'index.php',
-      'mod' => 'sidebarC',
-      'hook' => 'index',
-      'articleMod' => 'articleC',
-      'articleHook' => 'index'
-    ];
+    try
+    {
+      parent::__construct($linker, $requestM);
 
-    $this->initView('sidebarVP', $viewHints);
+      $viewHints = [
+        'ep' => 'index.php',
+        'mod' => 'sidebarC',
+        'hook' => 'index',
+        'articleMod' => 'articleC',
+        'articleHook' => 'index'
+      ];
+
+      $this->initView('sidebarVP', $viewHints);
+    }
+    catch (Exception $e)
+    {
+      $this->view->drawPage($e->getMessage());
+    }
   }
 
   /**

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * front controller
+ * download controller
  * __________________________________________________________________
  */
 class downloadC extends cbArticleC
@@ -11,13 +11,12 @@ class downloadC extends cbArticleC
    * Konstruktor
    * ________________________________________________________________
    */
-  public function __construct()
+  public function __construct($linker, $requestM)
   {
     try
     {
-      $requestM = new cbRequestM(); // FIXME
       $articleName = $requestM->getReqVar('article');
-      parent::__construct('TAL-downloads', $articleName);
+      parent::__construct('TAL-downloads', $articleName, $linker, $requestM);
 
       $viewHints = [
         'ep' => 'index.php',
@@ -33,9 +32,9 @@ class downloadC extends cbArticleC
       $this->view->setData('bgImg', 'downloads.gif');
       $this->view->setData('ver', getVer());
     }
-    catch(Exception $e)
+    catch (Exception $e)
     {
-      throw $e;
+      $this->view->drawPage($e->getMessage());
     }
   }
 

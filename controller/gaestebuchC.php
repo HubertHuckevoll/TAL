@@ -6,19 +6,26 @@
  */
 class gaestebuchC extends cbArticleCommentsC
 {
-  public function __construct()
+  public function __construct($linker, $requestM)
   {
-    parent::__construct('TAL-pages', 'Gaestebuch');
+    try
+    {
+      parent::__construct('TAL-pages', 'Gaestebuch', $linker, $requestM);
 
-    $viewHints = [
-      'ep' => 'index.php',
-      'mod' => 'gaestebuchC',
-      'hook' => 'index'
-    ];
+      $viewHints = [
+        'ep' => 'index.php',
+        'mod' => 'gaestebuchC',
+        'hook' => 'index'
+      ];
 
-    $this->initView('gaestebuchVP', $viewHints);
-    $this->view->setData('ver', getVer()); // FIXME!!!
-    $this->view->setData('bgImg', 'gbuch.gif');
+      $this->initView('gaestebuchVP', $viewHints);
+      $this->view->setData('ver', getVer());
+      $this->view->setData('bgImg', 'gbuch.gif');
+    }
+    catch (Exception $e)
+    {
+      $this->view->drawPage($e->getMessage());
+    }
   }
 }
 

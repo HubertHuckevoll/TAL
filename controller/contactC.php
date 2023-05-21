@@ -1,7 +1,7 @@
 <?php
 
 /**
- * front controller
+ * contact controller
  * __________________________________________________________________
  */
 class contactC extends cbArticleContactC
@@ -11,11 +11,11 @@ class contactC extends cbArticleContactC
    * Konstruktor
    * ________________________________________________________________
    */
-  public function __construct()
+  public function __construct($linker, $requestM)
   {
     try
     {
-      parent::__construct('TAL-pages', 'Kontakt');
+      parent::__construct('TAL-pages', 'Kontakt', $linker, $requestM);
 
       $viewHints = [
         'ep' => 'index.php',
@@ -27,9 +27,9 @@ class contactC extends cbArticleContactC
       $this->view->setData('bgImg', 'kontakt.gif');
       $this->view->setData('ver', getVer());
     }
-    catch(Exception $e)
+    catch (Exception $e)
     {
-      throw $e;
+      $this->view->drawPage($e->getMessage());
     }
   }
 }

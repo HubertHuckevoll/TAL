@@ -1,7 +1,7 @@
 <?php
 
 /**
- * front controller
+ * article controller
  * __________________________________________________________________
  */
 class articleC extends cbArticleC
@@ -11,13 +11,12 @@ class articleC extends cbArticleC
    * Konstruktor
    * ________________________________________________________________
    */
-  public function __construct()
+  public function __construct($linker, $requestM)
   {
     try
     {
-      $requestM = new cbRequestM(); // FIXME
       $articleName = $requestM->getReqVar('article');
-      parent::__construct('TAL-articles', $articleName);
+      parent::__construct('TAL-articles', $articleName, $linker, $requestM);
 
       $viewHints = [
         'ep' => 'index.php',
@@ -34,9 +33,9 @@ class articleC extends cbArticleC
       $this->view->setData('bgImg', 'dienste.gif');
       $this->view->setData('ver', getVer());
     }
-    catch(Exception $e)
+    catch (Exception $e)
     {
-      throw $e;
+      $this->view->drawPage($e->getMessage());
     }
   }
 
