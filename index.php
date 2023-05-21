@@ -7,7 +7,7 @@ require_once('autoload.php');
 
 try
 {
-  $lV = new \cb\view\fragment\cbLinkVF('index.php');
+  $lV = new \cb\view\fragment\cbLinkVF();
 
   // link to article
   $lV->add('/index\.php\?mod=.*&amp;hook=(.*)\&amp;articleBox=(.*)\&amp;article=(.*)\&amp;articlePage=(.*)/', function($a)
