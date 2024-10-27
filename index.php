@@ -33,6 +33,7 @@ try
     return 'gallery/'.$a[3].'/'.$a[4].','.$a[5].'.html/'.$a[6];
   });
 
+  //$pc = new talPageC();
   $pc = new talPageC($lV);
   $cr = new cbRouterHookC($pc);
   $cr->run();

@@ -37,7 +37,7 @@ class talPageC extends cbPageC
    * the blog hook
    * ________________________________________________________________
    */
-  public function index()
+  public function articles()
   {
     $boxA = $this->boxes->getBoxByName('TAL-articles');
     $cbb = new cbBoxC($boxA);
