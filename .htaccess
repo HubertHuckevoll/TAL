@@ -5,29 +5,32 @@ AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css a
 </ifmodule>
 # END GZIP
 
+# Options
 Options -Indexes
 Options +FollowSymLinks
+
+# Rewrite settings
 RewriteEngine On
 
-RewriteRule gallery/TAL-articles/(.*),([0-9]*).html/([0-9]*)$       index.php?hook=gallery&articleHook=article&articleBox=TAL-articles&article=$1&articlePage=$2&imgIdx=$3
-RewriteRule TAL-articles/(.*),(.*).html$                            index.php?hook=article&article=$1&articlePage=$2
-RewriteRule TAL-articles/([0-9]+)$                                  index.php?hook=articles&boxPage=$1
-RewriteRule backFrom/TAL-articles/(.*).html$                        index.php?hook=articles&boxPage=$1
-RewriteRule TAL-articles$                                           index.php?hook=articles
-RewriteRule /$                                                      index.php?hook=articles
+# Specific Rewrite Rules
+RewriteRule gallery/TAL-articles/(.*),([0-9]*).html/([0-9]*)$ index.php?hook=gallery&articleHook=article&articleBox=TAL-articles&article=$1&articlePage=$2&imgIdx=$3 [L]
+RewriteRule TAL-articles/(.*),(.*).html$ index.php?hook=article&article=$1&articlePage=$2 [L]
+RewriteRule TAL-articles/([0-9]+)$ index.php?hook=articles&boxPage=$1 [L]
+RewriteRule backFrom/TAL-articles/(.*).html$ index.php?hook=articles&boxPage=$1 [L]
+RewriteRule TAL-articles$ index.php?hook=articles [L]
+RewriteRule ^/?$ index.php?hook=articles [L]
 
-RewriteRule TAL-pages/Kontakt.html$                                 index.php?hook=contact&op=show
-RewriteRule TAL-pages/Gaestebuch.html$                              index.php?hook=gaestebuch&op=show
-RewriteRule TAL-pages/(.*),(.*).html$                               index.php?hook=page&article=$1&articlePage=$2
-RewriteRule TAL-pages/(.*).html$                                    index.php?hook=page&article=$1
+RewriteRule TAL-pages/Kontakt.html$ index.php?hook=contact&op=show [L]
+RewriteRule TAL-pages/Gaestebuch.html$ index.php?hook=gaestebuch&op=show [L]
+RewriteRule TAL-pages/(.*),(.*).html$ index.php?hook=page&article=$1&articlePage=$2 [L]
+RewriteRule TAL-pages/(.*).html$ index.php?hook=page&article=$1 [L]
 
-RewriteRule TAL-downloads/(.*),(.*).html$                           index.php?hook=download&article=$1&articlePage=$2
-RewriteRule TAL-downloads/([0-9]+)$                                 index.php?hook=downloads&boxPage=$1
-RewriteRule backFrom/TAL-downloads/(.*).html$                       index.php?hook=downloads&boxPage=$1
-RewriteRule TAL-downloads$                                          index.php?hook=downloads
+RewriteRule TAL-downloads/(.*),(.*).html$ index.php?hook=download&article=$1&articlePage=$2 [L]
+RewriteRule TAL-downloads/([0-9]+)$ index.php?hook=downloads&boxPage=$1 [L]
+RewriteRule backFrom/TAL-downloads/(.*).html$ index.php?hook=downloads&boxPage=$1 [L]
+RewriteRule TAL-downloads$ index.php?hook=downloads [L]
 
-RewriteRule sitemap.xml                                             index.php?hook=sitemap
+RewriteRule sitemap.xml index.php?hook=sitemap [L]
+RewriteRule boxes.json - [F]
 
-RewriteRule                                                         boxes.json - [F]
-
-ErrorDocument 404                                                   /error404.php
+ErrorDocument 404 /error404.php
