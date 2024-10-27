@@ -16,7 +16,7 @@ class searchC extends cbSearchC
     try
     {
       parent::__construct($linker, $requestM);
-
+      
       $viewHints = [
         'ep' => 'index.php',
         'mod' => 'articleC',
@@ -29,6 +29,7 @@ class searchC extends cbSearchC
       $this->initView('searchVP', $viewHints);
       $this->view->setData('bgImg', 'dienste.gif');
       $this->view->setData('ver', getVer());
+      
     }
     catch (Exception $e)
     {

@@ -132,6 +132,7 @@ class talVP extends \cb\view\page\cbPageVP
                    '<div id="footerRight">'.
                      '<div>Geschäftsführer: Mathias Meyer</div>'.
                      '<div>USt.-IdNr. DE 23 111 9997</div>'.
+                     '<div>Amtsgericht Chemnitz HRB 18656</div>'.
                      '<div>IBAN DE81870500003557005550 &middot; BIC CHEKDE81XXX</div>'.
                      '<div><a href="TAL-pages/Impressum.html">Impressum</a></div>'.
                      '<div><a href="TAL-pages/dsgvo.html">Datenschutzerkl&auml;rung</a></div>'.
