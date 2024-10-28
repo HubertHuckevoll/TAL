@@ -60,7 +60,7 @@ class talPageC extends cbPageC
     }
     catch (Exception $e)
     {
-    	$this->view->drawPage($e->getMessage);
+    	$this->view->drawPage($e->getMessage());
     }
   }
 
@@ -122,7 +122,7 @@ class talPageC extends cbPageC
     }
     catch (Exception $e)
     {
-    	$this->view->drawPage($e->getMessage);
+    	$this->view->drawPage($e->getMessage());
     }
   }
 

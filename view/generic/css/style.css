@@ -180,6 +180,8 @@ main
 .sidebarMenuBoxContent
 {
   padding: 4px;
+  font-size: smaller;
+  line-height: normal;  
 }
 
 #hotStuffBox .sidebarMenuBoxContent
