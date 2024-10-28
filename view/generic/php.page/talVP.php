@@ -30,7 +30,7 @@ class talVP extends \cb\view\page\cbPageVP
                                                'Veranstaltungstechnik, Video, Videotechnik, Beschallung, Ton, Tontechnik, Tontechniker, Event, Eventtechnik,'.
                                                'Eventdesign, Eventmanagement, Eventmarketing, Licht, Lichttechnik, Lichtdesign, Lichtdesigner, Lichttechniker,'.
                                                'Location, Locationdesign, Regie, Regieturm">'.
-                '<meta name="description" content="'.htmlentities($this->data['metaDescription']).'">'.
+                '<meta name="description" content="'.htmlentities(($this->data['metaDescription'] ?? '' )).'">'.
                 '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">'.
                 '<meta name="mobile-web-app-capable" content="yes">'.
                 '<meta name="apple-mobile-web-app-status-bar-style" content="black">'.
@@ -51,7 +51,7 @@ class talVP extends \cb\view\page\cbPageVP
                 '<script src="'.PROJECT_JS_URL.'jscode.js"></script>'.
                 $this->additionalHeadData().
               '</head>'.
-              '<body style="background: url('.PROJECT_IMG_URL.'opernball_chemnitz_bg.jpg) left top no-repeat fixed, url('.PROJECT_IMG_URL.$this->data['bgImg'].') left bottom no-repeat fixed, url('.PROJECT_IMG_URL.'vorhang_abstrakt.jpg) right top no-repeat fixed;">'.
+              '<body style="background: url('.PROJECT_IMG_URL.'opernball_chemnitz_bg.jpg) left top no-repeat fixed, url('.PROJECT_IMG_URL.($this->data['bgImg'] ?? '').') left bottom no-repeat fixed, url('.PROJECT_IMG_URL.'vorhang_abstrakt.jpg) right top no-repeat fixed;">'.
                   '<div id="banner">'.
                      '<h1>Theater-Architekturlicht Chemnitz GmbH</h1>'.
                      '<h2>Partner für professionelle Theater- und Architekturlichttechnik</h2>'.
@@ -135,7 +135,7 @@ class talVP extends \cb\view\page\cbPageVP
                      '<div>IBAN DE81870500003557005550 &middot; BIC CHEKDE81XXX</div>'.
                      '<div><a href="TAL-pages/Impressum.html">Impressum</a></div>'.
                      '<div><a href="TAL-pages/dsgvo.html">Datenschutzerkl&auml;rung</a></div>'.
-                     '<div>Version: '.$this->data['ver'].'</div>'.
+                     '<div>Version: '.($this->data['ver'] ?? '').'</div>'.
                    '</div>'.
                   '</div>'.
               '</body>'.
